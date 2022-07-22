@@ -29,7 +29,7 @@ jobs:
           fetch-depth: 0
 
       - name: test echo
-          run: echo "echo v1"
+        run: echo "echo v1"
 
       - uses: ./.github/actions/say_hello
         with:
