@@ -28,6 +28,6 @@ jobs:
         with:
           fetch-depth: 0
 
-      - uses: ./.github/workflows/manual.yml
+      - uses: ./.github/actions/say_hello
         with:
           name: ${{ github.event.inputs.environment }}
