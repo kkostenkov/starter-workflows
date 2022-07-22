@@ -3,14 +3,13 @@ name: Say Hello now and then
 
 on:
   schedule:
-  - cron: '5 * * * *'
+  - cron: '2 * * * *'
 
 jobs:
-  geet:
-
-    runs-on: ubuntu-latest
-
+  scheduled_greet:
+  runs-on: ubuntu-latest
     steps:
-    - uses: ./.github/workflows/manual
+    - name: manual greet call
+      uses: ./.github/workflows/manual
       with:
-         name: "scheduler"
+         name: "scheduler defined name"
