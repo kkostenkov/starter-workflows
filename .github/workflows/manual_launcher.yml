@@ -31,4 +31,4 @@ jobs:
       - name: manual greet call
         uses: ./.github/workflows/manual
         with:
-          name: {env.GAME_SERVER_ENVIRONMENT}
+          name: ${{ github.event.inputs.environment }}
