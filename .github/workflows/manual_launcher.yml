@@ -28,7 +28,6 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: manual greet call
-        uses: ./.github/workflows/manual.yml
+      - uses: ./.github/workflows/manual.yml
         with:
           name: ${{ github.event.inputs.environment }}
