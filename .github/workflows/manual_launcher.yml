@@ -1,0 +1,34 @@
+name: Run another manual
+
+on: 
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Environment'
+        type: choice
+        options:
+          - UAT
+          - Staging
+          - Production
+      build_version:
+        description: 'Custom build version'
+      build_number:
+        description: 'Custom build number'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    env:
+      PLATFORM_TO_BUILD: iOS
+      GAME_SERVER_ENVIRONMENT: ${{ github.event.inputs.environment }}
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: manual greet call
+        uses: ./.github/workflows/manual
+        with:
+          name: {env.GAME_SERVER_ENVIRONMENT}
