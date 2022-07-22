@@ -1,0 +1,16 @@
+
+name: Say Hello now and then
+
+on:
+  schedule:
+  - cron: '5 * * * *'
+
+jobs:
+  geet:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: ./.github/workflows/manual
+      with:
+         name: "scheduler"
