@@ -7,11 +7,11 @@ on:
 
 jobs:
   scheduled_greet:
-  runs-on: ubuntu-latest
-  steps:
-    - uses: actions/checkout@v3
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
 
-    - name: manual greet call
-      uses: ./.github/workflows/manual
-      with:
-         name: "scheduler defined name"
+      - name: manual greet call
+        uses: ./.github/workflows/manual
+        with:
+          name: "scheduler defined name"
