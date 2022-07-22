@@ -8,7 +8,9 @@ on:
 jobs:
   scheduled_greet:
   runs-on: ubuntu-latest
-    steps:
+  steps:
+    - uses: actions/checkout@v3
+
     - name: manual greet call
       uses: ./.github/workflows/manual
       with:
