@@ -16,13 +16,18 @@ on:
         description: 'Custom build number'
 
 jobs:
-  prepare:
+  reusable_workflow_job:
     runs-on: ubuntu-latest
+    environment: production
+    steps:
+      - uses: ./.github/workflows/my-action
+        with:
+          username: ${{ inputs.username }}
+          token: ${{ secrets.envPAT }}
 
-    env:
-      PLATFORM_TO_BUILD: iOS
-      GAME_SERVER_ENVIRONMENT: ${{ github.event.inputs.environment }}
-
+jobs:
+  prepare_and_call_reusable_workflow_job:
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
         with:
@@ -31,10 +36,9 @@ jobs:
       - name: test echo
         run: echo "echo v1"
 
-      - uses: kkostenkov/starter-workflows/manual_reusable.yml #./.github/workflows/manual_reusable.yml
+      - uses: ./.github/workflows/manual_reusable
+        with:
+          name: ${{ inputs.environment }}
+          # token: ${{ secrets.envPAT }}
 
-  # execute_reusable:
-  #   uses: ./.github/workflows/manual_reusable.yml
-    # with:
-    #   name: ${{ github.event.inputs.environment }}
-      # 
+  

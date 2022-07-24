@@ -1,16 +1,17 @@
 name: Manual workflow reusable
 on:  
   workflow_call:
-    # inputs:
-    #   name:
-    #     default: 'World'
-    #     required: true
+    inputs:
+      name:
+        default: 'World'
+        required: true
+        type: string
   workflow_dispatch:
-    # inputs:
-    #   name:
-    #     description: 'Person to greet'
-    #     default: 'World'
-    #     required: true
+    inputs:
+      name:
+        description: 'Person to greet'
+        default: 'World'
+        required: true
   
 
 jobs:
@@ -19,4 +20,4 @@ jobs:
 
     steps:
     - name: Send greeting
-      run: echo "Hello " #${{ github.event.inputs.name }}"
+      run: echo "Hello " #${{ inputs.name }}"
