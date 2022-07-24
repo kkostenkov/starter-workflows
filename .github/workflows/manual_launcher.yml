@@ -31,8 +31,11 @@ jobs:
       - name: test echo
         run: echo "echo v1"
 
-  execute_reusable:
-    uses: ./.github/workflows/manual_reusable.yml
+      - name: reusable step
+      uses: ./.github/workflows/manual_reusable.yml
+
+  # execute_reusable:
+  #   uses: ./.github/workflows/manual_reusable.yml
     # with:
     #   name: ${{ github.event.inputs.environment }}
       # kkostenkov/starter-workflows/.github/workflows/manual_reusable.yml
