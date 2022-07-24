@@ -1,6 +1,11 @@
 name: Manual workflow
 on:  
-  workflow_call
+  workflow_call:
+    inputs:
+      name:
+        description: 'Person to greet'
+        default: 'World'
+        required: true
   workflow_dispatch:
     inputs:
       name:
