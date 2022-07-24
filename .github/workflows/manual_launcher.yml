@@ -16,7 +16,7 @@ on:
         description: 'Custom build number'
 
 jobs:
-  build:
+  prepare:
     runs-on: ubuntu-latest
 
     env:
@@ -31,6 +31,7 @@ jobs:
       - name: test echo
         run: echo "echo v1"
 
-      - uses: ./.github/workflows/manual_reusable.yml
-        with:
-          name: ${{ github.event.inputs.environment }}
+  execute_reusable:
+    uses: ./.github/workflows/manual_reusable.yml
+      with:
+        name: ${{ github.event.inputs.environment }}
