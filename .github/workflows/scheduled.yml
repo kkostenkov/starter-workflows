@@ -2,8 +2,9 @@
 name: Say Hello now and then
 
 on:
-  schedule:
-  - cron: '2 * * * *'
+  workflow_dispatch:
+  # schedule:
+  # - cron: '2 * * * *'
 
 jobs:
   scheduled_greet:
