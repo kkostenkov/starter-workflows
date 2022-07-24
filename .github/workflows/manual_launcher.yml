@@ -33,6 +33,6 @@ jobs:
 
   execute_reusable:
     uses: ./.github/workflows/manual_reusable.yml
-    with:
-      name: ${{ github.event.inputs.environment }}
+    # with:
+    #   name: ${{ github.event.inputs.environment }}
       # kkostenkov/starter-workflows/.github/workflows/manual_reusable.yml
