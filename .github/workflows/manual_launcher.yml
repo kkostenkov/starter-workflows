@@ -16,16 +16,6 @@ on:
         description: 'Custom build number'
 
 jobs:
-  reusable_workflow_job:
-    runs-on: ubuntu-latest
-    environment: production
-    steps:
-      - uses: ./.github/workflows/my-action
-        with:
-          username: ${{ inputs.username }}
-          token: ${{ secrets.envPAT }}
-
-jobs:
   prepare_and_call_reusable_workflow_job:
     runs-on: ubuntu-latest
     steps:
