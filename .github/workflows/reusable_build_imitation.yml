@@ -3,7 +3,7 @@ on:
   workflow_call:
     inputs:
       branch_name:
-        #default: 'main'
+        default: 'main'
         #required: true
         type: string
       environment:
@@ -37,14 +37,6 @@ jobs:
       TEST_SECRET: ${{ secrets.TEST_SECRET }}
     
     steps:
-
-    - name: get brahch from inputs
-        #if: "${{ inputs.branch_name != '' }}"
-        run: echo branch name is ${{ inputs.branch_name }}
-    - name: get brahch from workflow_dispatch
-        #if: "${{ inputs.branch_name == '' }}"
-        run: echo branch name is ${{ env.GITHUB_REF }}
-      
     - uses: actions/checkout@v2
       with:
         fetch-depth: 0
