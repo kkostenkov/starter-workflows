@@ -3,12 +3,9 @@ on:
   workflow_call:
     inputs:
       branch_name:
-        #default: 'main'
-        #required: true
         type: string
       environment:
         default: 'UAT'
-        #required: true
         type: string
     #secrets: inherit
   workflow_dispatch:
@@ -31,100 +28,15 @@ jobs:
     runs-on: ubuntu-latest
     env:
       PLATFORM_TO_BUILD: iOS
-      #GAME_SERVER_ENVIRONMENT: ${{ github.event.inputs.environment }}
       GAME_SERVER_ENVIRONMENT: ${{ inputs.environment }}
-      BRANCH_NAME: ${{ inputs.branch_name }}
- # from call head_ref  == '' ref_name == main
- # from dispatch head_ref '' ==  ref_name == working_dispatch
       CUSTOM_BRANCH_NAME: ${{ inputs.branch_name || github.ref_name }} 
       TEST_SECRET: ${{ secrets.TEST_SECRET }}
     
     steps:
-    # - name: get brahch from inputs
-    #     #if: "${{ inputs.branch_name != '' }}"
-    #   run: echo branch name is ${{ env.BRANCH_NAME }}
-    # - name: get brahch from workflow_dispatch
-    #     #if: "${{ inputs.branch_name == '' }}"
-    #   run: echo branch name is ${{ env.GITHUB_REF }}
-
     - uses: actions/checkout@v2
       with:
         fetch-depth: 0
-        #ref: working_dispatch # works 
         ref: ${{ env.CUSTOM_BRANCH_NAME }}
 
     - name: Send greeting
-      run: echo "input got ${{ env.GAME_SERVER_ENVIRONMENT }} ${{ env.CUSTOM_BRANCH_NAME }} ${{ env.TEST_SECRET }} ${{ github.head_ref }} ${{ github.ref_name }} "
-
-# jobs:
-#   build:
-#     runs-on: [self-hosted, clientside-ci, app-builder, ios]
-
-
-#     steps:
-#       - uses: actions/checkout@v2
-#         with:
-#           fetch-depth: 0
-
-#       - name: Bundle install
-#         run: bundle install
-
-#       - name: Load ci.json
-#         id: json_var
-#         run: |
-#           content=`cat ./fastlane/ci.json`
-#           content="${content//$'\n'/ }"
-#           echo "::set-output name=json::$content"
-
-#       - name: Bump build number
-#         run: bundle exec fastlane bump_build_number platform:${{env.PLATFORM_TO_BUILD}}
-
-#       - name: Custom build build number
-#         run: bundle exec ruby ./fastlane/set_build_number.rb ${{env.PLATFORM_TO_BUILD}} ${{github.event.inputs.build_number}}
-
-#       - name: Custom build build version
-#         run: bundle exec ruby ./fastlane/set_version.rb ${{github.event.inputs.build_version}}
-
-#       - name: Select server environment
-#         run: bundle exec ruby ./fastlane/select_fortune_server_env.rb ${{env.GAME_SERVER_ENVIRONMENT}}
-
-#       - name: Set OneSignal AppId
-#         run: bundle exec ruby ./fastlane/set_one_signal_appid.rb ${{env.GAME_SERVER_ENVIRONMENT}}
-
-#       - name: Unity Touch
-#         run: ./fastlane/unity_helper -buildTarget ${{env.PLATFORM_TO_BUILD}} -executeMethod TripleDot.Fortune.Build.AutoBuilder.Touch
-
-#       - name: Unity Build
-#         run: ./fastlane/unity_helper -buildTarget ${{env.PLATFORM_TO_BUILD}} -executeMethod TripleDot.Fortune.Build.AutoBuilder.Perform${{env.PLATFORM_TO_BUILD}}Build
-
-#       - name: Copy fastlane files
-#         run: |
-#           mkdir -p Builds/${{env.PLATFORM_TO_BUILD}}/fastlane
-#           cp fastlane/Fastfile Builds/${{env.PLATFORM_TO_BUILD}}/fastlane/Fastfile
-#           cp fastlane/Appfile  Builds/${{env.PLATFORM_TO_BUILD}}/fastlane/Appfile
-#           cp fastlane/ci.json  Builds/${{env.PLATFORM_TO_BUILD}}/fastlane/ci.json
-
-#       - name: Xcode Build
-#         run: cd Builds/${{env.PLATFORM_TO_BUILD}} && bundle exec fastlane build
-
-#       - name: Upload debug symbols to s3
-#         run: AWS_DEFAULT_REGION=eu-central-1 bundle exec ruby ./fastlane/upload_symbols_to_s3.rb ${{env.PLATFORM_TO_BUILD}}
-
-#       - name: Upload to AppStoreConnect
-#         run: cd Builds/${{env.PLATFORM_TO_BUILD}} && bundle exec fastlane upload
-
-#       - name: Cleanup archives folder
-#         run: rm -rf ~/Library/Developer/Xcode/Archives
-
-#       - name: Git commit
-#         run: bundle exec ruby ./fastlane/make_git_commit.rb ${{env.PLATFORM_TO_BUILD}}
-
-#       - name: Slack notification
-#         run: bundle exec ruby ./fastlane/slack_build_message.rb ${{ env.PLATFORM_TO_BUILD }}
-        
-#       - name: JIRA automation
-#         run: bundle exec ruby ./fastlane/jira_automation.rb ${{env.PLATFORM_TO_BUILD}}
-
-#       - name: Slack failure notification
-#         if: ${{ failure() }}
-#         run: bundle exec ruby ./fastlane/slack_build_failed_message.rb ${{env.PLATFORM_TO_BUILD}} https://github.com/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID
+      run: echo "input got ${{ env.GAME_SERVER_ENVIRONMENT }} ${{ env.CUSTOM_BRANCH_NAME }} "
