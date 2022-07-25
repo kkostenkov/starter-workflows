@@ -31,7 +31,7 @@ jobs:
         run: echo "echo ${{ github.event.inputs.name }}"
 
       - name: test echo 2
-        run: echo "BRANCH ${{GAME_SERVER_ENVIRONMENT}}"
+        run: echo "BRANCH zz"
 
   greet:
     needs: prepare_job
