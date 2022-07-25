@@ -9,7 +9,7 @@ on:
         value: ${{ jobs.example_job.outputs.output1 }}
       branch_name:
         description: "The second output string"
-        value: ${{ jobs.example_job.outputs.branch_name }}
+        value: ${{ jobs.example_job.outputs.output2 }}
 
 jobs:
   example_job:
