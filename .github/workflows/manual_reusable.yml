@@ -18,7 +18,7 @@ env:
 
 jobs:
 
-  prepare:
+  prepare_job:
     runs-on: ubuntu-latest
 
     steps:
@@ -28,12 +28,13 @@ jobs:
           ref: working_dispatch
 
       - name: test echo
-        run: echo "echo $GAME_SERVER_ENVIRONMENT"
+        run: echo "echo ${{ github.event.inputs.name }}"
 
       - name: test echo 2
         run: echo "BRANCH $GITHUB_REF"
 
   greet:
+    needs: prepare_job
     runs-on: ubuntu-latest
 
     steps:
