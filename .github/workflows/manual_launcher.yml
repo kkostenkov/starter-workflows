@@ -28,7 +28,7 @@ jobs:
         with:
           fetch-depth: 0
           #ref: working_dispatch # works 
-          ref: ${{ needs.prepare_job.outputs.branch_name }}
+          ref: ${{ needs.prepare_job.outputs.firstword }}
 
   echo_job:
     needs: prepare_job

@@ -21,6 +21,6 @@ jobs:
       output2: ${{ steps.step2.outputs.branch_name }}
     steps:
       - id: step1
-        run: echo "::set-output name=firstword::hello"
+        run: echo "::set-output name=firstword::working_dispatch"
       - id: step2
-        run: echo "::set-output name=branch_name::working_dispatch"
+        run: echo "::set-output name=branch_name::working_dispatch1"
