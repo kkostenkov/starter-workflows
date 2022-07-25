@@ -31,7 +31,7 @@ jobs:
           ref: ${{ needs.prepare_job.outputs.firstword }}
 
   echo_job:
-    needs: checkout_job
+    needs: prepare_job
     runs-on: ubuntu-latest
     steps:
       - name: use outputs
@@ -39,8 +39,8 @@ jobs:
 
 # reusable workflow call job can't have steps 
   execute_reusable:
-    needs: echo_job
+    needs: prepare_job
     uses: ./.github/workflows/reusable_build_imitation.yml
     with:
-      #name: ${{ github.event.inputs.environment }}
+      name: ${{ github.event.inputs.environment }}
       secrets: inherit

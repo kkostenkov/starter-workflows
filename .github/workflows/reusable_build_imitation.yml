@@ -23,7 +23,7 @@ on:
 
 jobs:
 
-  build_job:
+  final_job:
     runs-on: ubuntu-latest
     
     steps:
