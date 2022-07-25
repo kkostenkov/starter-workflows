@@ -41,6 +41,6 @@ jobs:
   execute_reusable:
     needs: prepare_job
     uses: ./.github/workflows/reusable_build_imitation.yml
-    with:
+    #with:
       #name: ${{ github.event.inputs.environment }}
-      secrets: inherit
+    secrets: inherit
