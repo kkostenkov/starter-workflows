@@ -29,6 +29,7 @@ jobs:
       PLATFORM_TO_BUILD: iOS
       #GAME_SERVER_ENVIRONMENT: ${{ github.event.inputs.environment }}
       GAME_SERVER_ENVIRONMENT: ${{ inputs.environment }}
+      TEST_SECRET: ${{ secrets.TEST_SECRET }}
       # FASTLANE_APPSTORE_CONNECT_API_KEY: ${{ secrets.FASTLANE_APPSTORE_CONNECT_API_KEY }}
       # UNITY_ACCOUNT_LOGIN: ${{ secrets.UNITY_ACCOUNT_LOGIN }}
       # UNITY_ACCOUNT_PASSWORD: ${{ secrets.UNITY_ACCOUNT_PASSWORD }}
@@ -43,6 +44,8 @@ jobs:
     steps:
     - name: Send greeting
       run: echo "input got ${{ env.GAME_SERVER_ENVIRONMENT }}"
+    - name: print secret
+      run: echo "input got ${{ env.TEST_SECRET }}"
 
 # jobs:
 #   build:
