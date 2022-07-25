@@ -13,15 +13,13 @@ on:
         default: 'World'
         required: true
   
+env:
+      GAME_SERVER_ENVIRONMENT: ${{ github.event.inputs.name }} # not wokring
 
 jobs:
-  
+
   prepare:
     runs-on: ubuntu-latest
-
-    env:
-      PLATFORM_TO_BUILD: iOS
-      GAME_SERVER_ENVIRONMENT: ${{ github.event.inputs.name }}
 
     steps:
       - uses: actions/checkout@v2
@@ -30,9 +28,10 @@ jobs:
           ref: working_dispatch
 
       - name: test echo
-        run: echo "echo ${{GAME_SERVER_ENVIRONMENT}}"
+        run: echo "echo $GAME_SERVER_ENVIRONMENT"
+
       - name: test echo 2
-        run: echo "BRANCH ${{GITHUB_REF}}"
+        run: echo "BRANCH $GITHUB_REF"
 
   greet:
     runs-on: ubuntu-latest
