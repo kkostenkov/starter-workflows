@@ -2,6 +2,10 @@ name: Build imitation reusable
 on:  
   workflow_call:
     inputs:
+      branch_name:
+        default: 'main'
+        required: true
+        type: string
       environment:
         default: 'UAT'
         #required: true
@@ -33,9 +37,7 @@ jobs:
     
     steps:
     - name: Send greeting
-      run: echo "input got ${{ env.GAME_SERVER_ENVIRONMENT }}"
-    - name: print secret
-      run: echo "input got ${{ env.TEST_SECRET }}"
+      run: echo "input got ${{ env.GAME_SERVER_ENVIRONMENT }} ${{ inputs.branch_name }} ${{ env.TEST_SECRET }}"
 
 # jobs:
 #   build:

@@ -41,6 +41,6 @@ jobs:
   execute_reusable:
     needs: echo_job
     uses: ./.github/workflows/reusable_build_imitation.yml
-    #with:
-      #name: ${{ github.event.inputs.environment }}
+    with:
+      branch_name: ${{ needs.prepare_job.outputs.branch_name }}
     secrets: inherit
