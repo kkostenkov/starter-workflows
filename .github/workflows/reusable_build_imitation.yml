@@ -34,8 +34,9 @@ jobs:
       #GAME_SERVER_ENVIRONMENT: ${{ github.event.inputs.environment }}
       GAME_SERVER_ENVIRONMENT: ${{ inputs.environment }}
       BRANCH_NAME: ${{ inputs.branch_name }}
- 
-      IF_BRANCH_NAME: ${{ github.head_ref || github.ref_name }} 
+ # from call head_ref  == '' ref_name == main
+ # from dispatch head_ref '' ==  ref_name == working_dispatch
+      CUSTOM_BRANCH_NAME: ${{ inputs.branch_name || github.ref_name }} 
       TEST_SECRET: ${{ secrets.TEST_SECRET }}
     
     steps:
@@ -50,10 +51,10 @@ jobs:
       with:
         fetch-depth: 0
         #ref: working_dispatch # works 
-        ref: ${{ env.BRANCH_NAME }}
+        ref: ${{ env.CUSTOM_BRANCH_NAME }}
 
     - name: Send greeting
-      run: echo "input got ${{ env.GAME_SERVER_ENVIRONMENT }} ${{ env.BRANCH_NAME }} ${{ env.TEST_SECRET }} ${{ github.head_ref }} ${{ github.ref_name }} "
+      run: echo "input got ${{ env.GAME_SERVER_ENVIRONMENT }} ${{ env.CUSTOM_BRANCH_NAME }} ${{ env.TEST_SECRET }} ${{ github.head_ref }} ${{ github.ref_name }} "
 
 # jobs:
 #   build:
