@@ -6,7 +6,7 @@ on:
         default: 'World'
         required: true
         type: string
-    secrets: inherit
+    #secrets: inherit
   workflow_dispatch:
     inputs:
       name:
