@@ -40,7 +40,6 @@ jobs:
 # reusable workflow call job can't have steps 
   execute_reusable:
     needs: prepare_job
-    uses: ./.github/workflows/reusable_build_imitation.yml
+    uses: ./.github/workflows/manual_reusable.yml
     with:
       name: ${{ github.event.inputs.environment }}
-      secrets: inherit
