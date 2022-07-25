@@ -43,4 +43,5 @@ jobs:
     uses: ./.github/workflows/reusable_build_imitation.yml
     with:
       branch_name: ${{ needs.prepare_job.outputs.branch_name }}
+      environment: ${{ inputs.environment }}
     secrets: inherit

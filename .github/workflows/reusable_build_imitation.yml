@@ -4,7 +4,7 @@ on:
     inputs:
       branch_name:
         default: 'main'
-        required: true
+        #required: true
         type: string
       environment:
         default: 'UAT'
