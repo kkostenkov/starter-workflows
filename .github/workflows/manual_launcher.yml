@@ -28,14 +28,14 @@ jobs:
         with:
           fetch-depth: 0
           #ref: working_dispatch # works 
-          ref: ${{ needs.prepare_job.outputs.firstword }}
+          ref: ${{ needs.prepare_job.outputs.branch_name }}
 
   echo_job:
     needs: [prepare_job, checkout_job]
     runs-on: ubuntu-latest
     steps:
-      - name: use outputs
-        run: echo ${{ needs.prepare_job.outputs.firstword }} ${{ needs.prepare_job.outputs.branch_name }}
+      - name: print branch name
+        run: echo ${{ needs.prepare_job.outputs.branch_name }}
 
 # reusable workflow call job can't have steps 
   execute_reusable:
