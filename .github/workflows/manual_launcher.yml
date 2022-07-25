@@ -28,6 +28,7 @@ jobs:
         run: echo ${{ needs.prepare_job.outputs.firstword }} ${{ needs.prepare_job.outputs.secondword }}
 
   checkout_job:
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
         with:
