@@ -39,7 +39,7 @@ jobs:
 
 # reusable workflow call job can't have steps 
   execute_reusable:
-    needs: echo_job
+    needs: [echo_job, prepare_job]
     uses: ./.github/workflows/reusable_build_imitation.yml
     with:
       branch_name: ${{ needs.prepare_job.outputs.branch_name }}
