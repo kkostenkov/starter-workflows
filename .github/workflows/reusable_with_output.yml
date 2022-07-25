@@ -9,7 +9,7 @@ on:
         value: ${{ jobs.example_job.outputs.output1 }}
       branch_name:
         description: "The second output string"
-        value: ${{ jobs.example_job.outputs.output2 }}
+        value: ${{ jobs.example_job.outputs.branch_name }}
 
 jobs:
   example_job:
@@ -18,7 +18,7 @@ jobs:
     # Map the job outputs to step outputs
     outputs:
       output1: ${{ steps.step1.outputs.firstword }}
-      output2: ${{ steps.step2.outputs.branch_name }}
+      branch_name: ${{ steps.step2.outputs.branch_name }}
     steps:
       - id: step1
         run: echo "::set-output name=firstword::working_dispatch"

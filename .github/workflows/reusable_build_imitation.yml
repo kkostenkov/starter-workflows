@@ -30,16 +30,6 @@ jobs:
       #GAME_SERVER_ENVIRONMENT: ${{ github.event.inputs.environment }}
       GAME_SERVER_ENVIRONMENT: ${{ inputs.environment }}
       TEST_SECRET: ${{ secrets.TEST_SECRET }}
-      # FASTLANE_APPSTORE_CONNECT_API_KEY: ${{ secrets.FASTLANE_APPSTORE_CONNECT_API_KEY }}
-      # UNITY_ACCOUNT_LOGIN: ${{ secrets.UNITY_ACCOUNT_LOGIN }}
-      # UNITY_ACCOUNT_PASSWORD: ${{ secrets.UNITY_ACCOUNT_PASSWORD }}
-      # UNITY_ACCOUNT_SERIAL: ${{ secrets.UNITY_ACCOUNT_SERIAL }}
-      # UNITY_UPMCONFIG_TOML: ${{ secrets.UNITY_UPMCONFIG_TOML }}
-      # SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
-      # AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-      # AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-      # JIRA_LOGIN: ${{ secrets.JIRA_LOGIN }}
-      # JIRA_TOKEN: ${{ secrets.JIRA_TOKEN }}
     
     steps:
     - name: Send greeting
