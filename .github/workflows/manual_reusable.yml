@@ -27,10 +27,12 @@ jobs:
       - uses: actions/checkout@v2
         with:
           fetch-depth: 0
-          ref: 
+          ref: working_dispatch
 
       - name: test echo
-        run: echo "echo v1"
+        run: echo "echo ${{GAME_SERVER_ENVIRONMENT}}"
+      - name: test echo 2
+        run: echo "BRANCH ${{GITHUB_REF}}"
 
   greet:
     runs-on: ubuntu-latest
