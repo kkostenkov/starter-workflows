@@ -20,18 +20,18 @@ jobs:
   prepare_job:
     uses: ./.github/workflows/reusable_with_output.yml
 
-  # checkout_job:
-  #   needs: prepare_job
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - uses: actions/checkout@v2
-  #       with:
-  #         fetch-depth: 0
-  #         #ref: working_dispatch # works 
-  #         ref: ${{ needs.prepare_job.outputs.branch_name }}
+  checkout_job:
+    needs: prepare_job
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+          #ref: working_dispatch # works 
+          ref: ${{ needs.prepare_job.outputs.branch_name }}
 
   echo_job:
-    needs: [prepare_job]
+    needs: [prepare_job, checkout_job]
     runs-on: ubuntu-latest
     steps:
       - name: print branch name
