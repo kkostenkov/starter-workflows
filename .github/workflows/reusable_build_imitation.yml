@@ -46,7 +46,7 @@ jobs:
     - name: Send greeting
       run: echo "input got ${{ env.GAME_SERVER_ENVIRONMENT }} ${{ env.BRANCH_NAME }} ${{ env.TEST_SECRET }}"
     - name: log branch
-      run: echo "git branch --show-current"
+      run: echo "::git branch --show-current"
 
 # jobs:
 #   build:
