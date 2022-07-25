@@ -1,4 +1,4 @@
-name: Build imitation reusable
+name: Build imitation reusable dispatch\call
 on:  
   workflow_call:
     inputs:
@@ -7,7 +7,7 @@ on:
       environment:
         default: 'UAT'
         type: string
-    #secrets: inherit
+
   workflow_dispatch:
     inputs:
       environment:

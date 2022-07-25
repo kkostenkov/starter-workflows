@@ -1,4 +1,4 @@
-name: Run another manual
+name: Dispatch reusable build imitation
 
 on: 
   workflow_dispatch:
@@ -9,39 +9,17 @@ on:
         options:
           - UAT
           - Staging
-          - Production
-      build_version:
-        description: 'Custom build version'
-      build_number:
-        description: 'Custom build number'
 
 jobs:
 
   prepare_job:
     uses: ./.github/workflows/reusable_with_output.yml
 
-  # checkout_job:
-  #   needs: prepare_job
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - uses: actions/checkout@v2
-  #       with:
-  #         fetch-depth: 0
-  #         #ref: working_dispatch # works 
-  #         ref: ${{ needs.prepare_job.outputs.branch_name }}
-
-  echo_job:
-    needs: [prepare_job]
-    runs-on: ubuntu-latest
-    steps:
-      - name: print branch name
-        run: echo ${{ needs.prepare_job.outputs.branch_name }}
-
 # reusable workflow call job can't have steps 
   execute_reusable:
-    needs: [echo_job, prepare_job]
+    needs: [prepare_job]
     uses: ./.github/workflows/reusable_build_imitation.yml
     with:
       branch_name: ${{ needs.prepare_job.outputs.branch_name }}
-      environment: ${{ inputs.environment }}
+      # environment: ${{ inputs.environment }}
     secrets: inherit

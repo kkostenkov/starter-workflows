@@ -1,18 +1,21 @@
 
-name: Say Hello now and then
+name: Scheduled build imitation call
 
 on:
   workflow_dispatch:
-  # schedule:
-  # - cron: '2 * * * *'
+  schedule:
+  - cron: '41 03 * * 1-6'
+
 
 jobs:
-  scheduled_greet:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
 
-      - name: manual greet call
-        uses: ./.github/workflows/manual
-        with:
-          name: "scheduler defined name"
+  prepare_job:
+    uses: ./.github/workflows/reusable_with_output.yml
+
+# reusable workflow call job can't have steps 
+  execute_reusable:
+    needs: [prepare_job]
+    uses: ./.github/workflows/reusable_build_imitation.yml
+    with:
+      branch_name: ${{ needs.prepare_job.outputs.branch_name }}
+    secrets: inherit
