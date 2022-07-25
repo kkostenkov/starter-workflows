@@ -25,7 +25,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: use outputs
-      run: echo ${{ needs.prepare_job.outputs.firstword }} ${{ needs.prepare_job.outputs.secondword }}
+        run: echo ${{ needs.prepare_job.outputs.firstword }} ${{ needs.prepare_job.outputs.secondword }}
 
   checkout_job:
     steps:
