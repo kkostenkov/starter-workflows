@@ -16,19 +16,23 @@ on:
         description: 'Custom build number'
 
 jobs:
-  prepare_and_call_reusable_workflow_job:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
+  # prepare:
+  #   runs-on: ubuntu-latest
 
-      - name: test echo
-        run: echo "echo v1"
+  #   env:
+  #     PLATFORM_TO_BUILD: iOS
+  #     GAME_SERVER_ENVIRONMENT: ${{ github.event.inputs.environment }}
 
-      - uses: ./.github/workflows/manual_reusable
-        with:
-          name: ${{ inputs.environment }}
-          # token: ${{ secrets.envPAT }}
+  #   steps:
+  #     - uses: actions/checkout@v2
+  #       with:
+  #         fetch-depth: 0
 
-  
+  #     - name: test echo
+  #       run: echo "echo v1"
+
+# reusable workflow call job can't have steps 
+  execute_reusable:
+    uses: ./.github/workflows/manual_reusable.yml
+    with:
+      name: ${{ github.event.inputs.environment }}
