@@ -19,30 +19,9 @@ env:
 
 jobs:
 
-  echo_job:
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
-          ref: working_dispatch # works
-
-      - name: test echo 2
-        run: echo "BRANCH zz"
-
-  prepare_job:
-    needs: echo_job
-    - uses: octo-org/example-repo/.github/workflows/called-workflow.yml@v1
-
   final_job:
-    needs: prepare_job
     runs-on: ubuntu-latest
-
-    steps:
-      - name: use outputs
-      run: echo ${{ needs.prepare_job.outputs.firstword }} ${{ needs.prepare_job.outputs.secondword }}
-
+    
     steps:
     - name: Send greeting
       run: echo "Hello ${{ inputs.name }}"
