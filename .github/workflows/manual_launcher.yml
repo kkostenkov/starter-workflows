@@ -18,7 +18,7 @@ on:
 jobs:
   prepare_job:
     needs: echo_job
-    - uses: ./.github/workflows/reusable_with_output.yml
+    uses: ./.github/workflows/reusable_with_output.yml
 
   echo_job:
     needs: prepare_job
