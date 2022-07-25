@@ -6,8 +6,8 @@ on:
         default: 'UAT'
         required: true
         type: string
-      #secrets: inherit
- workflow_dispatch:
+    #secrets: inherit
+  workflow_dispatch:
     inputs:
       environment:
         description: 'Environment'
