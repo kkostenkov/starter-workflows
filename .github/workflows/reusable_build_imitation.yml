@@ -4,7 +4,7 @@ on:
     inputs:
       environment:
         default: 'UAT'
-        required: true
+        #required: true
         type: string
     #secrets: inherit
   workflow_dispatch:
