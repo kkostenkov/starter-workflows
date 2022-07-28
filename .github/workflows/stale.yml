@@ -20,6 +20,7 @@ jobs:
     steps:
     - uses: actions/stale@v5
       with:
-        days-before-stale: 1
+        days-before-stale: 0
         days-before-close: -1
+        ignore-updates: true
         debug-only: true
