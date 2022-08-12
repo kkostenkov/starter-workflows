@@ -1,0 +1,31 @@
+name: Get version branch name
+
+on:
+  workflow_call:
+    # Map the workflow outputs to job outputs
+    outputs:
+      branch_name:
+        description: "Branch of closest app version"
+        value: ${{ jobs.get_branch_job.outputs.branch_name }}
+
+jobs:
+
+  get_branch_job:
+    name: Generate output
+    runs-on: ubuntu-latest
+
+    env:
+      BRANCH_PATTERN: "ver/*"
+    # Map the job outputs to step outputs
+    outputs:
+      branch_name: ${{ steps.step1.outputs.branch_name }}
+    steps:
+    # - uses: actions/checkout@v2
+    #     with:
+    #       fetch-depth: 0
+
+    - name: get branch name
+        # id: set_output
+        run: |
+          branch_name='git branch --format='%(refname:short)' --list '${{ env.BRANCH_PATTERN }}' --sort=refname | head -1'
+          echo "::set-output name=branch_name::$branch_name"
