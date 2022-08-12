@@ -3,8 +3,8 @@ name: Scheduled build imitation call
 
 on:
   workflow_dispatch:
-  schedule:
-  - cron: '41 03 * * 1-6'
+  # schedule:
+  # - cron: '41 03 * * 1-6'
 
 
 jobs:
