@@ -20,9 +20,6 @@ jobs:
     outputs:
       branch_name: ${{ steps.step1.outputs.branch_name }}
     steps:
-    # - uses: actions/checkout@v2
-    #     with:
-    #       fetch-depth: 0
       - name: get branch name
         # id: set_output
         run: |
