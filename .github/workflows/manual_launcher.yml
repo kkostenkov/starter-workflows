@@ -18,7 +18,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - id: copy
-        uses: kkostenkov/starter-workflows/copy-rsp
+        uses: kkostenkov/starter-workflows/copy-rsp@main
         with:
           file_name: 'Staging'
       - run: echo random-number ${{ steps.foo.outputs.random-number }}
