@@ -12,14 +12,14 @@ on:
 
 jobs:
 
-  prepare_job:
-    uses: ./.github/workflows/reusable_with_output.yml
-
-# reusable workflow call job can't have steps 
-  execute_reusable:
-    needs: [prepare_job]
-    uses: ./.github/workflows/reusable_build_imitation.yml
-    with:
-      branch_name: ${{ needs.prepare_job.outputs.branch_name }}
-      # environment: ${{ inputs.environment }}
-    secrets: inherit
+  copy_commit_job:
+    runs-on: ubuntu-latest
+    name: A job to copy and commit
+    steps:
+      - uses: actions/checkout@v3
+      - id: copy
+        uses: kkostenkov/starter-workflows/copy-rsp
+        with:
+          file_name: 'Staging'
+      - run: echo random-number ${{ steps.foo.outputs.random-number }}
+        shell: bash

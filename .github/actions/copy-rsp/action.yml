@@ -1,0 +1,26 @@
+name: 'Copy rsp files'
+description: 'Copies rsp files for Unity to use them'
+inputs:
+  flags:
+    description: 'Flags to use on the cp command. See "man cp" or "cp --help" for more details'
+    required: false
+    default: ''
+  file_name:
+    description: 'Source file name without extention'
+    required: true
+  target:
+    description: 'Target directory'
+    default: 'Assets'
+    required: true
+runs:
+  using: 'composite'
+  steps: 
+  - run: |
+      cp Utilities/rsp_source/${{inputs.file_name}}.rsp ${{inputs.target}}/smcs.rsp
+      cp Utilities/rsp_source/${{inputs.file_name}}.rsp ${{inputs.target}}/gmcs.rsp
+      cp Utilities/rsp_source/${{inputs.file_name}}.rsp ${{inputs.target}}/scs.rsp
+    shell: bash
+  
+branding:
+  icon: 'copy'
+  color: 'green'
