@@ -1,0 +1,19 @@
+name: 'Delete rsp files'
+description: 'Deletes rsp files'
+inputs:
+  target:
+    description: 'Target directory'
+    default: 'Assets'
+    required: true
+runs:
+  using: 'composite'
+  steps: 
+  - run: |
+      rm ${{inputs.target}}/smcs.rsp
+      rm ${{inputs.target}}/gmcs.rsp
+      rm ${{inputs.target}}/scs.rsp
+    shell: bash
+  
+branding:
+  icon: 'delete'
+  color: 'green'
