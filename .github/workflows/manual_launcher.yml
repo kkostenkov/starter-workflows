@@ -1,4 +1,4 @@
-name: Dispatch reusable build imitation
+name: Call action
 
 on: 
   workflow_dispatch:
@@ -20,6 +20,6 @@ jobs:
       - id: copy
         uses: kkostenkov/starter-workflows/copy-rsp@main
         with:
-          file_name: 'Staging'
+          file_name: ${{ inputs.environment }}
       - run: echo random-number ${{ steps.foo.outputs.random-number }}
         shell: bash
