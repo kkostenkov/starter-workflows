@@ -23,6 +23,6 @@ jobs:
         with:
           file_name: ${{ inputs.environment }}
       - id: delete
-        uses: kkostenkov/starter-workflows/.github/actions/copy-rsp@main
+        uses: kkostenkov/starter-workflows/.github/actions/delete-rsp@main
       - run: echo random-number ${{ steps.foo.outputs.random-number }}
         shell: bash
