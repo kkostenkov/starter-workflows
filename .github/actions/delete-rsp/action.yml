@@ -8,8 +8,7 @@ inputs:
 runs:
   using: 'composite'
   steps: 
-  - id: Delete_rpss
-    run: |
+    - run: |
       rm ${{inputs.target}}/smcs.rsp
       rm ${{inputs.target}}/gmcs.rsp
       rm ${{inputs.target}}/scs.rsp
