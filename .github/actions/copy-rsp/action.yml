@@ -1,10 +1,6 @@
 name: 'Copy rsp files'
 description: 'Copies rsp files for Unity to use them'
 inputs:
-  flags:
-    description: 'Flags to use on the cp command. See "man cp" or "cp --help" for more details'
-    required: false
-    default: ''
   file_name:
     description: 'Source file name without extention'
     required: true
