@@ -22,5 +22,8 @@ jobs:
         # uses: kkostenkov/starter-workflows/copy-rsp@main
         with:
           file_name: ${{ inputs.environment }}
+      - uses: actions/checkout@v3
+      - id: delete
+        uses: ./.github/actions/delete-rsp
       - run: echo random-number ${{ steps.foo.outputs.random-number }}
         shell: bash
