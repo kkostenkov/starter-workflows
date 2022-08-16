@@ -15,7 +15,8 @@ inputs:
 runs:
   using: 'composite'
   steps: 
-  - run: |
+  - id: Copy rsp's
+    run: |
       cp Utilities/rsp_source/${{inputs.file_name}}.rsp ${{inputs.target}}/smcs.rsp
       cp Utilities/rsp_source/${{inputs.file_name}}.rsp ${{inputs.target}}/gmcs.rsp
       cp Utilities/rsp_source/${{inputs.file_name}}.rsp ${{inputs.target}}/scs.rsp
